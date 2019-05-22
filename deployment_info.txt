@@ -1,0 +1,13 @@
+create a gitignore
+$    touch .gitignore
+add to the file / use cmd shift . if the file is hidden
+    .DS_Store
+    .idea
+    .vagrant
+    bootstrap.sh
+    VagrantFile
+    bower_components/
+    node_modules
+    package-lock.json
+off to github
+    
