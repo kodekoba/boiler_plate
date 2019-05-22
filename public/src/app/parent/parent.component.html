@@ -1,17 +1,21 @@
+<button type="button" class="btn btn-info" [routerLink] = "['/p/new']" style="float:right">Create New Movie</button>
+<h2>Movie List</h2>
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Parent</th>
+      <th scope="col">Movie</th>
+      <th scope="col">Average Rating</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor = "let parent of listOfParents">
-      <th>{{parent.name}}</th>
+      <th>{{parent.title}}</th>
+      <td>{{parent["avg"]}}</td>
       <td>
-        <button type="button" class="btn btn-info" (click) = "onSelect(parent)">Select This Child</button>
+        <button type="button" class="btn btn-info" (click) = "onSelect(parent)">Select This Movie</button>
         <button type="button" class="btn btn-info" (click) = "onShow(parent)">Show Details</button>
-        <button type="button" class="btn btn-info" (click) = "onEdit(parent)">Edit</button>
+        <!-- <button type="button" class="btn btn-info" (click) = "onEdit(parent)">Edit</button> -->
         <button type="button" class="btn btn-danger" (click) = "onDelete(parent)">Delete</button>
       </td>
     </tr>

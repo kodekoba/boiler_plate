@@ -8,8 +8,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  newChild: any;
-  shownParent: any;
+  // newChild: any;
+  // shownParent: any;
+  newChild = { name: "", rating: null, comment: ""}
+  shownParent = { title: "", childs:[{ name: "", rating: null, comment: "" }] }
 
   constructor(
     private _httpService: HttpService,
@@ -18,8 +20,8 @@ export class DetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.newChild = { rating: null, comment: ""}
-    this.shownParent = { name: "", image: "", childs:[{ rating: null, comment: ""}] }
+    // this.newChild = { name: "", rating: null, comment: ""}
+    // this.shownParent = { name: "", image: "", childs:[{ rating: null, comment: ""}] }
     this.getShownParent();
   }
   getShownParent(){
@@ -33,15 +35,15 @@ export class DetailsComponent implements OnInit {
         for (var i = 0; i < this.shownParent[0].childs.length; i++){
           sum += this.shownParent[0].childs[i].rating;
         }
-          this.shownParent.avg = sum / (this.shownParent[0].childs.length);
-          this.shownParent.sortedchilds = this.shownParent[0].childs.sort(this._httpService.dynamicSort("-rating")) // sort by descending rating
+          this.shownParent["avg"] = sum / (this.shownParent[0].childs.length);
+          this.shownParent["sortedchilds"] = this.shownParent[0].childs.sort(this._httpService.dynamicSort("-rating")) // sort by descending rating
       }
     })
   }
   onSubmit(){
     let observable = this._httpService.addChild(this._route.snapshot.params.id, this.newChild);
     observable.subscribe(data => {
-      this.newChild = { rating: null, comment: ""};
+      this.newChild = { name: "", rating: null, comment: ""};
       this.getShownParent();
     })
   }

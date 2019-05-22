@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'p', component:ParentComponent},
   {path: 'c', component:ChildComponent},
   //catch all
-  {path: '**', component: HomeComponent}
+  {path: '**', component: ParentComponent}
 ];
 
 @NgModule({

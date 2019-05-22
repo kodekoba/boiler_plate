@@ -25,16 +25,6 @@ module.exports = {
             }
         });
     },
-    updateparent: function(req, res){
-        Parent.findOneAndUpdate({_id: req.params.id}, {name: req.body.name, image: req.body.image}, function(err, data){
-            if(err){
-                console.log("err updating parent");
-                res.json({errorMsg: "Error", error: err});
-            } else {
-                res.json({message: "Success", data: data});
-            }
-        });
-    },
     deleteparent: function(req, res){
         Parent.findOneAndDelete({_id: req.params.id}, function(err, data){
             if(err || data == null){

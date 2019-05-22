@@ -4,8 +4,7 @@ const ChildSchema = require("./child.js").schema;
 //change schema attributes as needed
 const ParentSchema = new mongoose.Schema(
     {
-    name: {type: String, required: true, trim: true, unique: true},
-    image: {type: String, required: true, trim: true},
+    title: {type: String, required: true, trim: true, unique: true, minlength: 3},
     childs: [ChildSchema]
     }, {timestamps: true}
 );

@@ -23,7 +23,15 @@ export class ParentComponent implements OnInit {
     let observable = this._httpService.getParents();
     observable.subscribe(data => {
       // this.listOfParents = data['data']; // regular retrieval
-      this.listOfParents = data['data'].sort(this._httpService.dynamicSort("name")); //sort by name
+      this.listOfParents = data['data'].sort(this._httpService.dynamicSort("title")); //sort by name
+      for (var i = 0; i < this.listOfParents.length; i++){
+        var sum = 0;
+        for (var j = 0; j < this.listOfParents[i].childs.length; j++){
+          sum += this.listOfParents[i].childs[j].rating;
+        }
+        this.listOfParents[i]["avg"] = sum / (this.listOfParents[i].childs.length);
+      }
+        // this.listOfParents["sortedchilds"] = this.listOfParents[0].childs.sort(this._httpService.dynamicSort("-rating")) // sort by descending rating
     })
   }
   onShow(parent) {

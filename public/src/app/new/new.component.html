@@ -3,25 +3,30 @@
 <!-- sample of front end validation from component (be sure boolean is defined in component and triggered on submit function) -->
 <!-- <p *ngIf="errorBoolean == true">Your name must be at least 3 characters long</p> -->
 <!-- sample of real time validation -->
-<!-- <p *ngIf="newParent.name.length >= 1 && newParent.name.length < 3">Your name must be at least 3 characters</p> -->
+<p *ngIf="newParent.title.length >= 1 && newParent.title.length < 3">Title must be at least 3 characters</p>
+<p *ngIf="newChild.name.length >= 1 && newChild.name.length < 3">Your name must be at least 3 characters</p>
+<p *ngIf="newChild.comment.length >= 1 && newChild.comment.length < 3">Your comment must be at least 3 characters</p>
 
+<p *ngIf="errorTitle == true">Title must be at least 3 characters long</p>
+<p *ngIf="errorName == true">Your name must be at least 3 characters long</p>
+<p *ngIf="errorComment == true">Your comment must be at least 3 characters long</p>
 <form (submit)="onSubmit()">
-  <label>Name:</label>
-  <input type="text" name="newParent.name" [(ngModel)] = "newParent.name">
-  <label>Image URL:</label>
-  <input type="text" name="newParent.image" [(ngModel)] = "newParent.image">
+  <label>Title:</label>
+  <input type="text" name="newParent.title" [(ngModel)] = "newParent.title" [value] = "newParent.title"><br>
 
   <!-- uncomment area below if you want a child to be created for the parent upon initialization (ex: a rating to be created upon product creation)  -->
-  <!-- <label>Rating:</label>
+  <label>Your Name:</label>
+  <input type="text" name="newChild.name" [(ngModel)] = "newChild.name" [value] = "newChild.name"><br>
+  <label>Rating:</label>
   <select name="newChild.rating" [(ngModel)]="newChild.rating">
     <option value="5">5 Stars</option>
     <option value="4">4 Stars</option>
     <option value="3">3 Stars</option>
     <option value="2">2 Stars</option>
     <option value="1">1 Stars</option>
-  </select>
+  </select><br>
   <label>Comment</label>
-  <textarea name="newChild.comment" [(ngModel)]="newChild.comment"></textarea> -->
-  <button type="submit" [disabled]="newParent.name.length < 3 || newParent.image.length < 3">Submit</button>
-</form>
+  <textarea name="newChild.comment" [(ngModel)]="newChild.comment" [value] = "newChild.comment"></textarea><br>
+  <button type="submit" [disabled]="newParent.title.length < 3 || newChild.name.length < 3 || newChild.comment.length < 3">Submit</button>
+</form><hr>
 <button [routerLink] = "['/p']">Cancel</button>

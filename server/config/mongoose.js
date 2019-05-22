@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
-mongoose.connect('mongodb://localhost/boiler_plate',{useNewUrlParser:true});
+mongoose.connect('mongodb://localhost/mean_exam',{useNewUrlParser:true});
 
 const models_paths = path.join(__dirname, './../models');
 fs.readdirSync(models_paths).forEach(function(file){

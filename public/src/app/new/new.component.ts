@@ -10,7 +10,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class NewComponent implements OnInit {
   newParent: any;
   newChild: any;
-  errorBoolean: boolean; //false
+  errorTitle: boolean; //false
+  errorName: boolean;
+  errorComment: boolean;
   errorMessage: "";
   constructor(
     private _httpService: HttpService,
@@ -19,16 +21,24 @@ export class NewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.newParent = { name: "", image: "", childs: [] } 
-    this.newChild = { rating: null, comment: ""}
+    this.newParent = { title: "", childs: [] } 
+    this.newChild = { name: "", rating: null, comment: ""}
   }
   onSubmit() {
     //
-    if(this.newParent.name.length < 3) {
-      this.errorBoolean = true;
-    } else {
+    if(this.newParent.title.length < 3) {
+      this.errorTitle = true;
+    } 
+    if (this.newChild.name.length < 3) {
+      this.errorName = true;
+    } 
+    if (this.newChild.comment.length < 3) {
+      this.errorComment = true;
+    } 
+    
+    else {
       // //can create a Parent with a "child" attached during initialization using the line below 
-      // this.newParent.childs.push(this.newChild);
+      this.newParent.childs.push(this.newChild);
       let observable = this._httpService.addParent(this.newParent);
       observable.subscribe(data => {
         console.log(data);

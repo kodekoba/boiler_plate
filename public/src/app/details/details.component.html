@@ -4,6 +4,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Reviewer</th>
       <th>Rating</th>
       <th>Comment</th>
       <th>Actions</th>
@@ -11,6 +12,7 @@
   </thead>
   <tbody>
     <tr *ngFor = "let child of shownParent[0].childs">
+      <td>{{child.name}}
       <td>{{child.rating}} Stars</td>
       <td>{{child.comment}}</td>
       <td>
@@ -19,17 +21,23 @@
     </tr>
   </tbody>
 </table>
-
+<hr>
+<p *ngIf="newChild.name.length >= 1 && newChild.name.length < 3">Your name must be at least 3 characters</p>
+<p *ngIf="newChild.comment.length >= 1 && newChild.comment.length < 3">Your comment must be at least 3 characters</p>
 <form (submit)="onSubmit()">
-    <label>Rating</label>
+    <label>Your Name:</label>
+    <input type="text" name="newChild.name" [(ngModel)] = "newChild.name" [value] = "newChild.name"><br>
+    <label>Rating:</label>
     <select name="newChild.rating" [(ngModel)]="newChild.rating">
       <option value="5">5 Stars</option>
       <option value="4">4 Stars</option>
       <option value="3">3 Stars</option>
       <option value="2">2 Stars</option>
       <option value="1">1 Stars</option>
-    </select>
-    <label>Comment</label>
-    <textarea name="newChild.comment" [(ngModel)]="newChild.comment"></textarea>
-    <button type="submit">Submit</button>
+    </select><br>
+    <label>Comment:</label>
+    <textarea name="newChild.comment" [(ngModel)]="newChild.comment" [value] = "newChild.comment"></textarea><br>
+    <button type="submit" [disabled]="newChild.name.length < 3 || newChild.comment.length < 3">Submit</button>
 </form>
+<hr>
+<button [routerLink] = "['/p']">Cancel</button>

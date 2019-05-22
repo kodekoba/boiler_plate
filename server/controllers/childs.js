@@ -36,9 +36,6 @@ module.exports = {
             }
         });
     },
-
-    //update child fxn ?
-
     deletechild: function (req, res) {
         console.log("Got to models");
         Parent.updateOne({ _id: req.params.pid }, { $pull: { childs: {_id:req.params.cid }} }, function (err, data) {

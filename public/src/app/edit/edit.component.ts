@@ -30,6 +30,7 @@ export class EditComponent implements OnInit {
     let observable = this._httpService.editParent(this._route.snapshot.params.id, this.editingParent);
     observable.subscribe(data =>{
       this.editingParent = data['data'][0];
+      this._router.navigate(['/p']);
     })
   }
 }
