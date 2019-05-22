@@ -13,12 +13,12 @@ off to github / nav to the project folder then
 $   git init
 $   git add --all
 $   git commit -m "initial commit"
-$   git remote add origin https://github.com/kodekoba/boiler_plate.git
+$   git remote add origin https://github.com/kodekoba/mean_exam.git
 $   git push -u origin master
 
 set up AWS
 
 copy paste later>>
-sudo ln -s /etc/nginx/sites-available/boiler_plate /etc/nginx/sites-enabled/boiler_plate
+sudo ln -s /etc/nginx/sites-available/mean_exam /etc/nginx/sites-enabled/mean_exam
 
-sudo chown -R ubuntu boiler_plate
+sudo chown -R ubuntu mean_exam
